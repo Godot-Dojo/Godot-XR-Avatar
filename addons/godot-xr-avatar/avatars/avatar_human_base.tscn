@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn7rww8e2uh14"]
+
+[ext_resource type="Script" path="res://addons/godot-xr-avatar/avatars/avatar_human_base.gd" id="1_a3h8k"]
+[ext_resource type="PackedScene" uid="uid://dye0t53hehye4" path="res://addons/godot-xr-avatar/avatars/avatar_base.tscn" id="1_hg722"]
+
+[node name="AvatarHumanBase" node_paths=PackedStringArray("face_meshes", "hand_meshes", "left_foot_target", "right_foot_target") instance=ExtResource("1_hg722")]
+script = ExtResource("1_a3h8k")
+height_pelvis = 1.0
+height_head = 1.6
+face_meshes = []
+hand_meshes = []
+left_foot_target = NodePath("LeftFoot")
+right_foot_target = NodePath("RightFoot")
+worn = false
+
+[node name="LeftFoot" type="Marker3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
+
+[node name="RightFoot" type="Marker3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)

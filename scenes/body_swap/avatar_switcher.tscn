@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcrc77tnhpoi3"]
+
+[ext_resource type="Script" path="res://scenes/body_swap/avatar_switcher.gd" id="1_5wxd1"]
+
+[node name="AvatarSwitcher" type="Node"]
+script = ExtResource("1_5wxd1")

@@ -1,0 +1,45 @@
+[gd_scene load_steps=12 format=3 uid="uid://s15pa8f3kxsk"]
+
+[ext_resource type="PackedScene" uid="uid://d1ql7lpff7t6i" path="res://addons/godot-xr-avatar/xr-tools/multiplayer_scene_base.tscn" id="1_cq1n7"]
+[ext_resource type="Script" path="res://scenes/network/arena/network_arena.gd" id="2_oqbw1"]
+[ext_resource type="PackedScene" uid="uid://rypqa6qcv0st" path="res://assets/maps/basic_map.tscn" id="3_3efbp"]
+[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="3_4ntgv"]
+[ext_resource type="PackedScene" uid="uid://3a6wjr3a13vd" path="res://assets/meshes/teleport/teleport.tscn" id="4_bmfbn"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="4_tnvw2"]
+[ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="5_ihu16"]
+[ext_resource type="Texture2D" uid="uid://clnfqn7qj5vmi" path="res://scenes/network/lobby/network lobby.png" id="5_t2vpw"]
+[ext_resource type="PackedScene" uid="uid://clt88d5d1dje4" path="res://addons/godot-xr-tools/functions/movement_crouch.tscn" id="6_j0k0u"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="7_8vtij"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="8_jyajv"]
+
+[node name="NetworkArena" instance=ExtResource("1_cq1n7")]
+script = ExtResource("2_oqbw1")
+
+[node name="LeftHand" parent="XROrigin3D/LeftHand" index="0" instance=ExtResource("3_4ntgv")]
+
+[node name="MovementDirect" parent="XROrigin3D/LeftHand" index="1" instance=ExtResource("4_tnvw2")]
+strafe = true
+
+[node name="MovementJump" parent="XROrigin3D/LeftHand" index="2" instance=ExtResource("5_ihu16")]
+jump_button_action = "by_button"
+
+[node name="MovementCrouch" parent="XROrigin3D/LeftHand" index="3" instance=ExtResource("6_j0k0u")]
+crouch_button_action = "ax_button"
+
+[node name="RightHand" parent="XROrigin3D/RightHand" index="0" instance=ExtResource("7_8vtij")]
+
+[node name="MovementDirect" parent="XROrigin3D/RightHand" index="1" instance=ExtResource("4_tnvw2")]
+
+[node name="MovementTurn" parent="XROrigin3D/RightHand" index="2" instance=ExtResource("8_jyajv")]
+
+[node name="Map" type="Node3D" parent="." index="2"]
+
+[node name="BasicMap" parent="Map" index="0" instance=ExtResource("3_3efbp")]
+
+[node name="ToLobby" parent="Map" index="1" instance=ExtResource("4_bmfbn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+scene = "res://scenes/network/lobby/network_lobby.tscn"
+title = ExtResource("5_t2vpw")
+spawn_point_name = ""
+spawn_point_position = Vector3(0, 0, 0)
+spawn_point_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

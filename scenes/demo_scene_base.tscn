@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://vmly2os3wm0d"]
+
+[ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_82bbd"]
+
+[node name="DemoSceneBase" instance=ExtResource("1_82bbd")]
+
+[node name="XRCamera3D" parent="XROrigin3D" index="0"]
+cull_mask = 1048573

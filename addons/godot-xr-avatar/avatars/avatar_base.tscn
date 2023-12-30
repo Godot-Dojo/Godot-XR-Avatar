@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://dye0t53hehye4"]
+
+[ext_resource type="Script" path="res://addons/godot-xr-avatar/avatars/avatar_base.gd" id="1_gxp7o"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_huaed"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Head:position")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Head:rotation")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("LeftHand:position")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("LeftHand:rotation")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("RightHand:position")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath("RightHand:rotation")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+properties/8/path = NodePath("LeftFoot:position")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+properties/9/path = NodePath("LeftFoot:rotation")
+properties/9/spawn = true
+properties/9/replication_mode = 1
+properties/10/path = NodePath("RightFoot:position")
+properties/10/spawn = true
+properties/10/replication_mode = 1
+properties/11/path = NodePath("RightFoot:rotation")
+properties/11/spawn = true
+properties/11/replication_mode = 1
+
+[node name="AvatarBase" type="Node3D" node_paths=PackedStringArray("head_target", "left_hand_target", "right_hand_target")]
+script = ExtResource("1_gxp7o")
+head_target = NodePath("Head")
+left_hand_target = NodePath("LeftHand")
+right_hand_target = NodePath("RightHand")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_huaed")
+public_visibility = false
+
+[node name="Head" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60601, -0.0789829)
+
+[node name="LeftHand" type="Marker3D" parent="."]
+transform = Transform3D(0.97855, 0.205987, 0.00288357, -0.171756, 0.808046, 0.563526, 0.113749, -0.551934, 0.826093, -0.33, 0.967, -0.354)
+
+[node name="RightHand" type="Marker3D" parent="."]
+transform = Transform3D(0.97847, -0.20636, -0.00345756, 0.172383, 0.807925, 0.563508, -0.113492, -0.551972, 0.826103, 0.329903, 0.967396, -0.353705)
