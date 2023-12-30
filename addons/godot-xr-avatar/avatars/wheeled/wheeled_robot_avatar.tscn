@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://b21igp85a8ctc"]
+
+[ext_resource type="PackedScene" uid="uid://dye0t53hehye4" path="res://addons/godot-xr-avatar/avatars/avatar_base.tscn" id="1_wtldy"]
+[ext_resource type="PackedScene" uid="uid://bv7lemfundhyj" path="res://addons/godot-xr-avatar/avatars/wheeled/wheeled-robot/wheeled_robot.gltf" id="2_1d3c3"]
+[ext_resource type="Script" path="res://addons/godot-xr-avatar/avatars/wheeled/wheeled_robot_avatar.gd" id="2_yx78h"]
+[ext_resource type="Texture2D" uid="uid://b4yrbcv8p147u" path="res://addons/godot-xr-avatar/avatars/wheeled/wheeled-robot/DiamondPlate006C_1K-JPG_Color.jpg" id="4_7w3hj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p24fs"]
+albedo_texture = ExtResource("4_7w3hj")
+uv1_triplanar = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_hb161"]
+material = SubResource("StandardMaterial3D_p24fs")
+radius = 0.3
+height = 0.6
+radial_segments = 24
+rings = 12
+
+[node name="WheeledRobotAvatar" node_paths=PackedStringArray("auto_start_ik", "face_meshes") instance=ExtResource("1_wtldy")]
+script = ExtResource("2_yx78h")
+auto_start_ik = [NodePath("Head/wheeled_robot/CharacterArmature/Skeleton3D/LeftArm"), NodePath("Head/wheeled_robot/CharacterArmature/Skeleton3D/RightArm")]
+face_meshes = [NodePath("Head/wheeled_robot/CharacterArmature/Skeleton3D/Head")]
+
+[node name="wheeled_robot" parent="Head" index="0" instance=ExtResource("2_1d3c3")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.5, 0)
+
+[node name="Skeleton3D" parent="Head/wheeled_robot/CharacterArmature" index="0"]
+bones/1/rotation = Quaternion(-0.0081504, -2.92539e-08, -1.65241e-09, 0.999967)
+bones/2/rotation = Quaternion(0.498664, 0.668794, 0.331761, -0.440435)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(-0.139769, 0.205408, 0.0295381, 0.968194)
+bones/4/rotation = Quaternion(0.000201622, -0.0114752, 0.000168878, 0.999934)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(-9.18795e-05, 0.0115839, -7.6977e-05, 0.999933)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(-0.498664, 0.668794, 0.331761, 0.440435)
+bones/7/rotation = Quaternion(-0.139769, -0.205408, -0.0295381, 0.968194)
+bones/9/rotation = Quaternion(-9.18797e-05, -0.0115839, 7.6977e-05, 0.999933)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.0220864, -0.00242645, -0.00246659, 0.99975)
+bones/10/scale = Vector3(1, 1, 1)
+
+[node name="LeftArm" type="SkeletonIK3D" parent="Head/wheeled_robot/CharacterArmature/Skeleton3D" index="2"]
+process_priority = 1
+root_bone = &"Shoulder.L"
+tip_bone = &"Hand.L"
+use_magnet = true
+magnet = Vector3(2, 0, 1)
+target_node = NodePath("../../../../../LeftHand/Target")
+
+[node name="RightArm" type="SkeletonIK3D" parent="Head/wheeled_robot/CharacterArmature/Skeleton3D" index="3"]
+process_priority = 1
+root_bone = &"Shoulder.R"
+tip_bone = &"Hand.R"
+use_magnet = true
+magnet = Vector3(-2, 0, 1)
+target_node = NodePath("../../../../../RightHand/Target")
+
+[node name="Target" type="Node3D" parent="LeftHand" index="0"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -0.03, -0.05, 0.18)
+
+[node name="Target" type="Node3D" parent="RightHand" index="0"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0.03, -0.05, 0.18)
+
+[node name="Wheel" type="MeshInstance3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+mesh = SubResource("SphereMesh_hb161")
+
+[editable path="Head/wheeled_robot"]
