@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://xponfb6a2dhm"]
+
+[ext_resource type="PackedScene" uid="uid://dye0t53hehye4" path="res://addons/godot-xr-avatar/avatars/avatar_base.tscn" id="1_q07e5"]
+[ext_resource type="PackedScene" uid="uid://csl11a8ntul4x" path="res://addons/godot-xr-avatar/avatars/flying/dragon-head/dragon-head.gltf" id="2_lob7r"]
+
+[node name="DragonHeadAvatar" node_paths=PackedStringArray("auto_start_ik", "face_meshes") instance=ExtResource("1_q07e5")]
+auto_start_ik = [NodePath("Head/dragon-head/CharacterArmature/Skeleton3D/LeftWing"), NodePath("Head/dragon-head/CharacterArmature/Skeleton3D/RightWing")]
+face_meshes = [NodePath("Head/dragon-head/CharacterArmature/Skeleton3D/Head")]
+
+[node name="Head" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50601, -0.278983)
+
+[node name="dragon-head" parent="Head" index="0" instance=ExtResource("2_lob7r")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.935495, 0.0789829)
+
+[node name="Skeleton3D" parent="Head/dragon-head/CharacterArmature" index="0"]
+bones/1/rotation = Quaternion(-0.0146272, -0.000937792, 0.00328756, 0.999887)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(0.236385, 0.00018451, -0.00341352, 0.971653)
+bones/3/rotation = Quaternion(0.60421, -0.000219789, -0.000165776, 0.796825)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(-0.263098, 0.191851, -0.551764, 0.767808)
+bones/5/rotation = Quaternion(0.0997321, -0.695578, -0.121162, 0.701102)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.0757427, -0.00222817, 0.0365728, 0.996454)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(-0.26326, -0.188611, 0.547243, 0.771781)
+bones/9/rotation = Quaternion(0.0997321, 0.695578, 0.121162, 0.701102)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.0757427, 0.00222815, -0.0365728, 0.996454)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(0.99962, -0.0124439, -0.00829572, -0.0231734)
+
+[node name="LeftWing" type="SkeletonIK3D" parent="Head/dragon-head/CharacterArmature/Skeleton3D" index="2"]
+process_priority = 1
+root_bone = &"Wing1.L"
+tip_bone = &"Wing4.L"
+use_magnet = true
+magnet = Vector3(2, 2, -1)
+target_node = NodePath("../../../../../LeftHand/Target")
+
+[node name="RightWing" type="SkeletonIK3D" parent="Head/dragon-head/CharacterArmature/Skeleton3D" index="3"]
+process_priority = 1
+root_bone = &"Wing1.R"
+tip_bone = &"Wing4.R"
+use_magnet = true
+magnet = Vector3(-2, 2, -1)
+target_node = NodePath("../../../../../RightHand/Target")
+
+[node name="Target" type="Node3D" parent="LeftHand" index="0"]
+transform = Transform3D(0.492404, -0.173648, -0.852869, 0.866026, -3.78552e-08, 0.5, -0.0868242, -0.984809, 0.150384, 0.03, -0.05, 0.18)
+
+[node name="Target" type="Node3D" parent="RightHand" index="0"]
+transform = Transform3D(0.492404, 0.173648, 0.852869, -0.866026, -3.78552e-08, 0.5, 0.0868242, -0.984808, 0.150384, -0.03, -0.05, 0.18)
+
+[editable path="Head/dragon-head"]

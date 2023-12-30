@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cn3q1876ybafj"]
+[gd_scene load_steps=22 format=3 uid="uid://cn3q1876ybafj"]
 
 [ext_resource type="PackedScene" uid="uid://vmly2os3wm0d" path="res://scenes/demo_scene_base.tscn" id="1_q3rf3"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_fijxn"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bcrc77tnhpoi3" path="res://scenes/body_swap/avatar_switcher.tscn" id="8_6rs1e"]
 [ext_resource type="PackedScene" uid="uid://ba6rrhwh7kn8c" path="res://addons/godot-xr-avatar/xr-tools/player_body_avatar.tscn" id="8_jxwrk"]
 [ext_resource type="PackedScene" uid="uid://m7ql3sny3boe" path="res://addons/godot-xr-avatar/avatars/human/sophia_avatar.tscn" id="8_qvjju"]
+[ext_resource type="PackedScene" uid="uid://xponfb6a2dhm" path="res://addons/godot-xr-avatar/avatars/flying/dragon_head_avatar.tscn" id="18_hsk11"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_0jvie"]
 viewport_path = NodePath("Map/Mirrors/SubViewport")
@@ -52,7 +53,7 @@ crouch_button_action = "ax_button"
 [node name="MovementTurn" parent="XROrigin3D/RightHand" index="2" instance=ExtResource("5_bhdvp")]
 
 [node name="AvatarSwitcher" parent="XROrigin3D/RightHand" index="3" node_paths=PackedStringArray("avatars") instance=ExtResource("8_6rs1e")]
-avatars = [NodePath("../../../Avatars/FemaleAvatar"), NodePath("../../../Avatars/Male1Avatar"), NodePath("../../../Avatars/Male2Avatar"), NodePath("../../../Avatars/SophiaAvatar")]
+avatars = [NodePath("../../../Avatars/FemaleAvatar"), NodePath("../../../Avatars/Male1Avatar"), NodePath("../../../Avatars/Male2Avatar"), NodePath("../../../Avatars/SophiaAvatar"), NodePath("../../../Avatars/DragonHeadAvatar")]
 
 [node name="PlayerBody" parent="XROrigin3D" index="3" instance=ExtResource("6_n1rsv")]
 
@@ -102,6 +103,7 @@ mesh = SubResource("QuadMesh_ouicf")
 
 [node name="FemaleAvatar" parent="Avatars" index="0" instance=ExtResource("5_y3gx5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+locally_driven = false
 
 [node name="Male1Avatar" parent="Avatars" index="1" instance=ExtResource("6_h2v3w")]
 
@@ -110,3 +112,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
 [node name="SophiaAvatar" parent="Avatars" index="3" instance=ExtResource("8_qvjju")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="DragonHeadAvatar" parent="Avatars" index="4" instance=ExtResource("18_hsk11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)

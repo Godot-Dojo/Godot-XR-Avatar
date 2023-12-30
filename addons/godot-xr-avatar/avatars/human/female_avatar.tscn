@@ -3,17 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://b2bh5b71ut1gr" path="res://addons/godot-xr-avatar/avatars/human/female/female_avatar.gltf" id="1_6oyic"]
 [ext_resource type="PackedScene" uid="uid://cn7rww8e2uh14" path="res://addons/godot-xr-avatar/avatars/avatar_human_base.tscn" id="1_dw4fp"]
 
-[node name="FemaleAvatar" node_paths=PackedStringArray("face_meshes", "hand_meshes", "rig", "spine_ik", "left_arm_ik", "right_arm_ik", "left_leg_ik", "right_leg_ik") instance=ExtResource("1_dw4fp")]
+[node name="FemaleAvatar" node_paths=PackedStringArray("hand_meshes", "rig", "auto_start_ik", "face_meshes") instance=ExtResource("1_dw4fp")]
 height_pelvis = 0.915
 height_head = 1.566
-face_meshes = [NodePath("female_avatar/Armature/Skeleton3D/Eyes"), NodePath("female_avatar/Armature/Skeleton3D/Head")]
 hand_meshes = [NodePath("female_avatar/Armature/Skeleton3D/Hand_L"), NodePath("female_avatar/Armature/Skeleton3D/Hand_R")]
 rig = NodePath("female_avatar/Armature")
-spine_ik = NodePath("female_avatar/Armature/Skeleton3D/Spine")
-left_arm_ik = NodePath("female_avatar/Armature/Skeleton3D/LeftArm")
-right_arm_ik = NodePath("female_avatar/Armature/Skeleton3D/RightArm")
-left_leg_ik = NodePath("female_avatar/Armature/Skeleton3D/LeftLeg")
-right_leg_ik = NodePath("female_avatar/Armature/Skeleton3D/RightLeg")
+auto_start_ik = [NodePath("female_avatar/Armature/Skeleton3D/Spine"), NodePath("female_avatar/Armature/Skeleton3D/LeftArm"), NodePath("female_avatar/Armature/Skeleton3D/RightArm"), NodePath("female_avatar/Armature/Skeleton3D/LeftLeg"), NodePath("female_avatar/Armature/Skeleton3D/RightLeg")]
+face_meshes = [NodePath("female_avatar/Armature/Skeleton3D/Eyes"), NodePath("female_avatar/Armature/Skeleton3D/Head")]
+locally_driven = null
 
 [node name="Target" type="Node3D" parent="Head" index="0"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0.0141275, 0.0319544)
