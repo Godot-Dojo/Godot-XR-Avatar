@@ -1,0 +1,153 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf7vdhvhnsy04"]
+
+[ext_resource type="Script" path="res://scenes/network/lobby/lobby_2d.gd" id="1_igp6h"]
+
+[node name="Lobby2D" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 200.0
+script = ExtResource("1_igp6h")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Host" type="MarginContainer" parent="TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Host"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="TabContainer/Host/VBoxContainer"]
+layout_mode = 2
+text = "Host network game"
+horizontal_alignment = 1
+
+[node name="Separator1" type="HSeparator" parent="TabContainer/Host/VBoxContainer"]
+layout_mode = 2
+
+[node name="Spacer1" type="Control" parent="TabContainer/Host/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Host/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 2
+
+[node name="HostPortLabel" type="Label" parent="TabContainer/Host/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Port"
+
+[node name="HostPort" type="SpinBox" parent="TabContainer/Host/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1025.0
+max_value = 65535.0
+value = 51784.0
+
+[node name="Spacer2" type="Control" parent="TabContainer/Host/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Separator2" type="HSeparator" parent="TabContainer/Host/VBoxContainer"]
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="TabContainer/Host/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HostButton" type="Button" parent="TabContainer/Host/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "Host"
+
+[node name="QuitButton" type="Button" parent="TabContainer/Host/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "Quit"
+
+[node name="Join" type="MarginContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Join"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="TabContainer/Join/VBoxContainer"]
+layout_mode = 2
+text = "Join network game"
+horizontal_alignment = 1
+
+[node name="Separator1" type="HSeparator" parent="TabContainer/Join/VBoxContainer"]
+layout_mode = 2
+
+[node name="Spacer1" type="Control" parent="TabContainer/Join/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Join/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 2
+
+[node name="JoinHostLabel" type="Label" parent="TabContainer/Join/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Host"
+
+[node name="JoinHost" type="LineEdit" parent="TabContainer/Join/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "127.0.0.1"
+
+[node name="JoinPortLabel" type="Label" parent="TabContainer/Join/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Port"
+
+[node name="JoinPort" type="SpinBox" parent="TabContainer/Join/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1025.0
+max_value = 65535.0
+value = 51784.0
+
+[node name="Spacer2" type="Control" parent="TabContainer/Join/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Separator2" type="HSeparator" parent="TabContainer/Join/VBoxContainer"]
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="TabContainer/Join/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="JoinButton" type="Button" parent="TabContainer/Join/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "Join
+"
+
+[node name="QuitButton" type="Button" parent="TabContainer/Join/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="TabContainer/Host/VBoxContainer/Buttons/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="TabContainer/Host/VBoxContainer/Buttons/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="TabContainer/Join/VBoxContainer/Buttons/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="TabContainer/Join/VBoxContainer/Buttons/QuitButton" to="." method="_on_quit_button_pressed"]

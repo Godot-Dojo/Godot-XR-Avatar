@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba6rrhwh7kn8c"]
+
+[ext_resource type="Script" path="res://addons/godot-xr-avatar/xr-tools/player_body_avatar.gd" id="1_2on57"]
+
+[node name="PlayerBodyAvatar" type="Node"]
+script = ExtResource("1_2on57")

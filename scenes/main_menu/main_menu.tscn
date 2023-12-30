@@ -1,0 +1,54 @@
+[gd_scene load_steps=13 format=3 uid="uid://trx486fjeo6m"]
+
+[ext_resource type="PackedScene" uid="uid://vmly2os3wm0d" path="res://scenes/demo_scene_base.tscn" id="1_s12ir"]
+[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_2keqh"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="3_66rtn"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="4_usuou"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="5_8lq8m"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="6_427pp"]
+[ext_resource type="PackedScene" uid="uid://rypqa6qcv0st" path="res://assets/maps/basic_map.tscn" id="8_7ggo2"]
+[ext_resource type="PackedScene" uid="uid://ba6rrhwh7kn8c" path="res://addons/godot-xr-avatar/xr-tools/player_body_avatar.tscn" id="8_urwre"]
+[ext_resource type="PackedScene" uid="uid://osnbnoehtlmg" path="res://addons/godot-xr-avatar/avatars/human/male1_avatar.tscn" id="10_g73au"]
+[ext_resource type="PackedScene" uid="uid://3a6wjr3a13vd" path="res://assets/meshes/teleport/teleport.tscn" id="10_wfufb"]
+[ext_resource type="Texture2D" uid="uid://cjdqjh48u7pim" path="res://scenes/body_swap/body swap.png" id="11_8cwyp"]
+[ext_resource type="Texture2D" uid="uid://clnfqn7qj5vmi" path="res://scenes/network/lobby/network lobby.png" id="12_bf61x"]
+
+[node name="MainMenu" instance=ExtResource("1_s12ir")]
+
+[node name="LeftHand" parent="XROrigin3D/LeftHand" index="0" instance=ExtResource("2_2keqh")]
+
+[node name="MovementDirect" parent="XROrigin3D/LeftHand" index="1" instance=ExtResource("3_66rtn")]
+strafe = true
+
+[node name="RightHand" parent="XROrigin3D/RightHand" index="0" instance=ExtResource("4_usuou")]
+
+[node name="MovementDirect" parent="XROrigin3D/RightHand" index="1" instance=ExtResource("3_66rtn")]
+
+[node name="MovementTurn" parent="XROrigin3D/RightHand" index="2" instance=ExtResource("5_8lq8m")]
+
+[node name="PlayerBody" parent="XROrigin3D" index="3" instance=ExtResource("6_427pp")]
+
+[node name="PlayerBodyAvatar" parent="XROrigin3D" index="4" node_paths=PackedStringArray("avatar") instance=ExtResource("8_urwre")]
+avatar = NodePath("../../Male1Avatar")
+
+[node name="Male1Avatar" parent="." index="1" instance=ExtResource("10_g73au")]
+
+[node name="Map" type="Node3D" parent="." index="2"]
+
+[node name="BasicMap" parent="Map" index="0" instance=ExtResource("8_7ggo2")]
+
+[node name="ToBodySwap" parent="Map" index="1" instance=ExtResource("10_wfufb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8)
+scene = "res://scenes/body_swap/body_swap.tscn"
+title = ExtResource("11_8cwyp")
+spawn_point_name = ""
+spawn_point_position = Vector3(0, 0, 0)
+spawn_point_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="ToNetworkLobby" parent="Map" index="2" instance=ExtResource("10_wfufb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8)
+scene = "res://scenes/network/lobby/network_lobby.tscn"
+title = ExtResource("12_bf61x")
+spawn_point_name = ""
+spawn_point_position = Vector3(0, 0, 0)
+spawn_point_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
