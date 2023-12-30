@@ -3,14 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://cn7rww8e2uh14" path="res://addons/godot-xr-avatar/avatars/avatar_human_base.tscn" id="1_402pv"]
 [ext_resource type="PackedScene" uid="uid://da457stdye0eo" path="res://addons/godot-xr-avatar/avatars/human/sophia/sophia.gltf" id="1_q8rlr"]
 
-[node name="SophiaAvatar" node_paths=PackedStringArray("face_meshes", "rig", "spine_ik", "left_arm_ik", "right_arm_ik", "left_leg_ik", "right_leg_ik") instance=ExtResource("1_402pv")]
-face_meshes = [NodePath("sophia/rig/Skeleton3D/Head")]
+[node name="SophiaAvatar" node_paths=PackedStringArray("rig", "auto_start_ik", "face_meshes") instance=ExtResource("1_402pv")]
 rig = NodePath("sophia/rig")
-spine_ik = NodePath("sophia/rig/Skeleton3D/Spine")
-left_arm_ik = NodePath("sophia/rig/Skeleton3D/LeftArm")
-right_arm_ik = NodePath("sophia/rig/Skeleton3D/RightArm")
-left_leg_ik = NodePath("sophia/rig/Skeleton3D/LeftLeg")
-right_leg_ik = NodePath("sophia/rig/Skeleton3D/RightLeg")
+auto_start_ik = [NodePath("sophia/rig/Skeleton3D/Spine"), NodePath("sophia/rig/Skeleton3D/LeftArm"), NodePath("sophia/rig/Skeleton3D/RightArm"), NodePath("sophia/rig/Skeleton3D/LeftLeg"), NodePath("sophia/rig/Skeleton3D/RightLeg")]
+face_meshes = [NodePath("sophia/rig/Skeleton3D/Head")]
 
 [node name="Target" type="Node3D" parent="Head" index="0"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.0398175, 0.0319544)

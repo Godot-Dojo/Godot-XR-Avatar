@@ -17,37 +17,13 @@ extends XRAvatarBase
 
 @export var height_head : float = 1.6
 
-@export var face_meshes : Array[MeshInstance3D] = []
-
 @export var hand_meshes : Array[MeshInstance3D] = []
 
 @export var rig : Node3D
 
-@export var spine_ik : SkeletonIK3D
-
-@export var left_arm_ik : SkeletonIK3D
-
-@export var right_arm_ik : SkeletonIK3D
-
-@export var left_leg_ik : SkeletonIK3D
-
-@export var right_leg_ik : SkeletonIK3D
-
 @export var left_foot_target : Marker3D
 
 @export var right_foot_target : Marker3D
-
-## True if this avatar is being "worn"
-@export var worn : bool = false : set = _set_worn
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	spine_ik.start()
-	left_arm_ik.start()
-	right_arm_ik.start()
-	left_leg_ik.start()
-	right_leg_ik.start()
 
 
 func _process(_delta : float) -> void:
@@ -67,16 +43,10 @@ func _process(_delta : float) -> void:
 		(Vector3.DOWN * height_pelvis)
 
 
-# Handle setting worn avatar
-func _set_worn(p_worn : bool) -> void:
-	worn = p_worn
+# Override _update_locally_driven to hide hand meshes
+func _update_locally_driven() -> void:
+	super()
 
-	# Set all visual layers
-	if is_inside_tree():
-		# Switch face-meshes to layer 2 when worn
-		for m in face_meshes:
-			m.layers = 2 if p_worn else 1
-
-		# Switch hand meshes invisible when worn
-		for m in hand_meshes:
-			m.visible = false if p_worn else true
+	# Switch hand meshes invisible when locally driven
+	for m in hand_meshes:
+		m.visible = false if locally_driven else true

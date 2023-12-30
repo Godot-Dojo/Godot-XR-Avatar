@@ -3,17 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://cn7rww8e2uh14" path="res://addons/godot-xr-avatar/avatars/avatar_human_base.tscn" id="1_gd88l"]
 [ext_resource type="PackedScene" uid="uid://brk13hp1ugn4c" path="res://addons/godot-xr-avatar/avatars/human/male1/male_avatar.gltf" id="1_hib1p"]
 
-[node name="Male1Avatar" node_paths=PackedStringArray("face_meshes", "hand_meshes", "rig", "spine_ik", "left_arm_ik", "right_arm_ik", "left_leg_ik", "right_leg_ik") instance=ExtResource("1_gd88l")]
+[node name="Male1Avatar" node_paths=PackedStringArray("hand_meshes", "rig", "auto_start_ik", "face_meshes") instance=ExtResource("1_gd88l")]
 height_pelvis = 1.002
 height_head = 1.686
-face_meshes = [NodePath("male_avatar/Armature/Skeleton3D/Eyes"), NodePath("male_avatar/Armature/Skeleton3D/Head")]
 hand_meshes = [NodePath("male_avatar/Armature/Skeleton3D/Hand_L"), NodePath("male_avatar/Armature/Skeleton3D/Hand_R")]
 rig = NodePath("male_avatar/Armature")
-spine_ik = NodePath("male_avatar/Armature/Skeleton3D/Spine")
-left_arm_ik = NodePath("male_avatar/Armature/Skeleton3D/LeftArm")
-right_arm_ik = NodePath("male_avatar/Armature/Skeleton3D/RightArm")
-left_leg_ik = NodePath("male_avatar/Armature/Skeleton3D/LeftLeg")
-right_leg_ik = NodePath("male_avatar/Armature/Skeleton3D/RightLeg")
+auto_start_ik = [NodePath("male_avatar/Armature/Skeleton3D/Spine"), NodePath("male_avatar/Armature/Skeleton3D/LeftArm"), NodePath("male_avatar/Armature/Skeleton3D/RightArm"), NodePath("male_avatar/Armature/Skeleton3D/LeftLeg"), NodePath("male_avatar/Armature/Skeleton3D/RightLeg")]
+face_meshes = [NodePath("male_avatar/Armature/Skeleton3D/Eyes"), NodePath("male_avatar/Armature/Skeleton3D/Head")]
 
 [node name="Head" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.734, -0.08)
