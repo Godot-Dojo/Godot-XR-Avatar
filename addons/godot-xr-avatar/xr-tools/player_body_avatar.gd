@@ -59,6 +59,7 @@ func _physics_process(_delta : float) -> void:
 	_current_avatar.head_target.global_transform = _camera.global_transform
 	_current_avatar.left_hand_target.global_transform = _left_controller.global_transform
 	_current_avatar.right_hand_target.global_transform = _right_controller.global_transform
+	_current_avatar.ground_control = _body.ground_control_velocity
 
 
 func _set_avatar(p_avatar : XRAvatarBase) -> void:
