@@ -27,18 +27,9 @@ properties/6/replication_mode = 1
 properties/7/path = NodePath("RightHand:rotation")
 properties/7/spawn = true
 properties/7/replication_mode = 1
-properties/8/path = NodePath("LeftFoot:position")
+properties/8/path = NodePath(".:ground_control")
 properties/8/spawn = true
 properties/8/replication_mode = 1
-properties/9/path = NodePath("LeftFoot:rotation")
-properties/9/spawn = true
-properties/9/replication_mode = 1
-properties/10/path = NodePath("RightFoot:position")
-properties/10/spawn = true
-properties/10/replication_mode = 1
-properties/11/path = NodePath("RightFoot:rotation")
-properties/11/spawn = true
-properties/11/replication_mode = 1
 
 [node name="AvatarBase" type="Node3D" node_paths=PackedStringArray("head_target", "left_hand_target", "right_hand_target")]
 script = ExtResource("1_gxp7o")
