@@ -18,6 +18,9 @@ extends Node3D
 ## Node set to the players right-hand tracker
 @export var right_hand_target : Marker3D
 
+## Ground control velocity
+@export var ground_control : Vector2
+
 ## Array of SkeletonIK3D to auto-start
 @export var auto_start_ik : Array[SkeletonIK3D] = []
 
