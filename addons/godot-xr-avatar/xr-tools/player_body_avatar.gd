@@ -71,12 +71,12 @@ func _set_avatar(p_avatar : XRAvatarBase) -> void:
 func _update_avatar() -> void:
 	# Stop wearing old avatar
 	if is_instance_valid(_current_avatar):
-		_current_avatar.worn = false
+		_current_avatar.locally_driven = false
 
 	# Wear the new avatar
 	_current_avatar = avatar
 	if is_instance_valid(_current_avatar):
-		_current_avatar.worn = true
+		_current_avatar.locally_driven = true
 
 
 ## Find an [XRToolsPlayerBodyAvatar] node.
