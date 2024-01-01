@@ -1,0 +1,66 @@
+# Workflow to automatically create deliverables
+name: Build on push
+
+on:
+  [push, pull_request]
+
+jobs:
+  build:
+    name: Assembling artifacts
+    runs-on: ubuntu-20.04
+
+    # Note, to satisfy the asset library we need to make sure our zip files have a root folder
+    # this is why we checkout into demo/godot-xr-avatar
+    # and build plugin/godot-xr-avatar
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: src/godot-xr-avatar
+      - name: Assemble Godot-XR-Avatar Plugin
+        run: |
+          mkdir plugin
+          mkdir plugin/godot-xr-avatar
+          mkdir plugin/godot-xr-avatar/addons
+          cp -r src/godot-xr-avatar/addons/godot-xr-avatar plugin/godot-xr-avatar/addons
+          cp src/godot-xr-avatar/LICENSE plugin/godot-xr-avatar/addons/godot-xr-avatar
+          cp src/godot-xr-avatar/CONTRIBUTORS.md plugin/godot-xr-avatar/addons/godot-xr-avatar
+          cp src/godot-xr-avatar/VERSIONS.md plugin/godot-xr-avatar/addons/godot-xr-avatar
+      - name: Assemble Godot-XR-Avatar Demo
+        run: |
+          mkdir demo
+          mkdir demo/godot-xr-avatar-demo
+          cp -r src/godot-xr-avatar/. demo/godot-xr-avatar-demo
+          cp src/godot-xr-avatar/LICENSE demo/godot-xr-avatar-demo
+          cp src/godot-xr-avatar/CONTRIBUTORS.md demo/godot-xr-avatar-demo
+          cp src/godot-xr-avatar/VERSIONS.md demo/godot-xr-avatar-demo
+      - name: Create Godot-XR-Avatar library artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: godot-xr-avatar
+          path: |
+            plugin
+      - name: Create Godot-XR-Avatar demo artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: godot-xr-avatar-demo
+          path: |
+            demo
+      - name: Zip asset
+        run: |
+          cd plugin
+          zip -qq -r ../godot-xr-avatar.zip godot-xr-avatar
+          cd ..
+          cd demo
+          zip -qq -r ../godot-xr-avatar-demo.zip godot-xr-avatar-demo
+          cd ..
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+      - name: Create and upload asset
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          artifacts: "godot-xr-avatar.zip,godot-xr-avatar-demo.zip"
+          omitNameDuringUpdate: true
+          omitBodyDuringUpdate: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
