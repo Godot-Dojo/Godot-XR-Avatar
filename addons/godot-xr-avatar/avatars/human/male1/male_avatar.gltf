@@ -14,28 +14,6 @@
 	],
 	"nodes":[
 		{
-			"name":"Wrist_L",
-			"rotation":[
-				0.5166546106338501,
-				-0.5663422346115112,
-				0.43880265951156616,
-				0.4688034951686859
-			],
-			"scale":[
-				1,
-				1.0000001192092896,
-				1
-			],
-			"translation":[
-				0.0004282696172595024,
-				0.27366435527801514,
-				0.00011083483695983887
-			]
-		},
-		{
-			"children":[
-				0
-			],
 			"name":"lowerarm_l",
 			"rotation":[
 				0.3905622363090515,
@@ -56,7 +34,7 @@
 		},
 		{
 			"children":[
-				1
+				0
 			],
 			"name":"upperarm_l",
 			"rotation":[
@@ -78,7 +56,7 @@
 		},
 		{
 			"children":[
-				2
+				1
 			],
 			"name":"clavicle_l",
 			"rotation":[
@@ -99,28 +77,6 @@
 			]
 		},
 		{
-			"name":"Wrist_R",
-			"rotation":[
-				0.516654908657074,
-				0.5663418173789978,
-				-0.4388023316860199,
-				0.4688039720058441
-			],
-			"scale":[
-				1,
-				0.9999998211860657,
-				1
-			],
-			"translation":[
-				-0.00042817508801817894,
-				0.2736641466617584,
-				0.00011102855205535889
-			]
-		},
-		{
-			"children":[
-				4
-			],
 			"name":"lowerarm_r",
 			"rotation":[
 				0.3905624449253082,
@@ -141,7 +97,7 @@
 		},
 		{
 			"children":[
-				5
+				3
 			],
 			"name":"upperarm_r",
 			"rotation":[
@@ -163,7 +119,7 @@
 		},
 		{
 			"children":[
-				6
+				4
 			],
 			"name":"clavicle_r",
 			"rotation":[
@@ -199,7 +155,7 @@
 		},
 		{
 			"children":[
-				8
+				6
 			],
 			"name":"head",
 			"rotation":[
@@ -221,7 +177,7 @@
 		},
 		{
 			"children":[
-				9
+				7
 			],
 			"name":"neck_01",
 			"rotation":[
@@ -238,9 +194,9 @@
 		},
 		{
 			"children":[
-				3,
-				7,
-				10
+				2,
+				5,
+				8
 			],
 			"name":"spine_03",
 			"rotation":[
@@ -257,7 +213,7 @@
 		},
 		{
 			"children":[
-				11
+				9
 			],
 			"name":"spine_02",
 			"rotation":[
@@ -279,7 +235,7 @@
 		},
 		{
 			"children":[
-				12
+				10
 			],
 			"name":"spine_01",
 			"rotation":[
@@ -315,7 +271,7 @@
 		},
 		{
 			"children":[
-				14
+				12
 			],
 			"name":"ball_l",
 			"rotation":[
@@ -337,7 +293,7 @@
 		},
 		{
 			"children":[
-				15
+				13
 			],
 			"name":"foot_l",
 			"rotation":[
@@ -359,7 +315,7 @@
 		},
 		{
 			"children":[
-				16
+				14
 			],
 			"name":"calf_l",
 			"rotation":[
@@ -381,7 +337,7 @@
 		},
 		{
 			"children":[
-				17
+				15
 			],
 			"name":"thigh_l",
 			"rotation":[
@@ -417,7 +373,7 @@
 		},
 		{
 			"children":[
-				19
+				17
 			],
 			"name":"ball_r",
 			"rotation":[
@@ -434,7 +390,7 @@
 		},
 		{
 			"children":[
-				20
+				18
 			],
 			"name":"foot_r",
 			"rotation":[
@@ -456,7 +412,7 @@
 		},
 		{
 			"children":[
-				21
+				19
 			],
 			"name":"calf_r",
 			"rotation":[
@@ -478,7 +434,7 @@
 		},
 		{
 			"children":[
-				22
+				20
 			],
 			"name":"thigh_r",
 			"rotation":[
@@ -500,9 +456,9 @@
 		},
 		{
 			"children":[
-				13,
-				18,
-				23
+				11,
+				16,
+				21
 			],
 			"name":"pelvis",
 			"rotation":[
@@ -519,7 +475,7 @@
 		},
 		{
 			"children":[
-				24
+				22
 			],
 			"name":"Root",
 			"rotation":[
@@ -537,6 +493,25 @@
 				-4.01348954071068e-09,
 				9.021908044815063e-05,
 				0.026580139994621277
+			]
+		},
+		{
+			"name":"Wrist_L",
+			"rotation":[
+				-0.03930490463972092,
+				-0.050322625786066055,
+				0.026112277060747147,
+				0.9976176023483276
+			],
+			"scale":[
+				1,
+				0.9999998807907104,
+				1.0000001192092896
+			],
+			"translation":[
+				-0.004176497459411621,
+				0.007650796789675951,
+				0.06911839544773102
 			]
 		},
 		{
@@ -560,7 +535,7 @@
 		},
 		{
 			"children":[
-				26
+				25
 			],
 			"name":"Thumb_Distal_L",
 			"rotation":[
@@ -582,7 +557,7 @@
 		},
 		{
 			"children":[
-				27
+				26
 			],
 			"name":"Thumb_Proximal_L",
 			"rotation":[
@@ -604,7 +579,7 @@
 		},
 		{
 			"children":[
-				28
+				27
 			],
 			"name":"Thumb_Metacarpal_L",
 			"rotation":[
@@ -645,7 +620,7 @@
 		},
 		{
 			"children":[
-				30
+				29
 			],
 			"name":"Ring_Distal_L",
 			"rotation":[
@@ -667,7 +642,7 @@
 		},
 		{
 			"children":[
-				31
+				30
 			],
 			"name":"Ring_Intermediate_L",
 			"rotation":[
@@ -689,7 +664,7 @@
 		},
 		{
 			"children":[
-				32
+				31
 			],
 			"name":"Ring_Proximal_L",
 			"rotation":[
@@ -706,7 +681,7 @@
 		},
 		{
 			"children":[
-				33
+				32
 			],
 			"name":"Ring_Metacarpal_L",
 			"rotation":[
@@ -747,7 +722,7 @@
 		},
 		{
 			"children":[
-				35
+				34
 			],
 			"name":"Index_Distal_L",
 			"rotation":[
@@ -769,7 +744,7 @@
 		},
 		{
 			"children":[
-				36
+				35
 			],
 			"name":"Index_Intermediate_L",
 			"rotation":[
@@ -791,7 +766,7 @@
 		},
 		{
 			"children":[
-				37
+				36
 			],
 			"name":"Index_Proximal_L",
 			"rotation":[
@@ -813,7 +788,7 @@
 		},
 		{
 			"children":[
-				38
+				37
 			],
 			"name":"Index_Metacarpal_L",
 			"rotation":[
@@ -854,7 +829,7 @@
 		},
 		{
 			"children":[
-				40
+				39
 			],
 			"name":"Middle_Distal_L",
 			"rotation":[
@@ -871,7 +846,7 @@
 		},
 		{
 			"children":[
-				41
+				40
 			],
 			"name":"Middle_Intermediate_L",
 			"rotation":[
@@ -893,7 +868,7 @@
 		},
 		{
 			"children":[
-				42
+				41
 			],
 			"name":"Middle_Proximal_L",
 			"rotation":[
@@ -915,7 +890,7 @@
 		},
 		{
 			"children":[
-				43
+				42
 			],
 			"name":"Middle_Metacarpal_L",
 			"rotation":[
@@ -956,7 +931,7 @@
 		},
 		{
 			"children":[
-				45
+				44
 			],
 			"name":"Little_Distal_L",
 			"rotation":[
@@ -978,7 +953,7 @@
 		},
 		{
 			"children":[
-				46
+				45
 			],
 			"name":"Little_Intermediate_L",
 			"rotation":[
@@ -1000,7 +975,7 @@
 		},
 		{
 			"children":[
-				47
+				46
 			],
 			"name":"Little_Proximal_L",
 			"rotation":[
@@ -1022,7 +997,7 @@
 		},
 		{
 			"children":[
-				48
+				47
 			],
 			"name":"Little_Metacarpal_L",
 			"rotation":[
@@ -1039,11 +1014,12 @@
 		},
 		{
 			"children":[
-				29,
-				34,
-				39,
-				44,
-				49
+				24,
+				28,
+				33,
+				38,
+				43,
+				48
 			],
 			"name":"Palm_L",
 			"rotation":[
@@ -1061,6 +1037,25 @@
 				-0.5474574565887451,
 				1.1088396310806274,
 				-0.27318519353866577
+			]
+		},
+		{
+			"name":"Wrist_R",
+			"rotation":[
+				-0.03930490463972092,
+				0.050322625786066055,
+				-0.026112277060747147,
+				0.9976176023483276
+			],
+			"scale":[
+				1,
+				0.9999998807907104,
+				1.0000001192092896
+			],
+			"translation":[
+				0.004176497459411621,
+				0.007650796789675951,
+				0.06911839544773102
 			]
 		},
 		{
@@ -1563,6 +1558,7 @@
 		},
 		{
 			"children":[
+				50,
 				54,
 				59,
 				64,
@@ -1619,8 +1615,8 @@
 				78,
 				79,
 				80,
-				25,
-				50,
+				23,
+				49,
 				75
 			],
 			"name":"Armature"
@@ -1814,58 +1810,58 @@
 		{
 			"inverseBindMatrices":7,
 			"joints":[
-				25,
-				24,
-				13,
-				12,
+				23,
+				22,
 				11,
-				3,
+				10,
+				9,
 				2,
 				1,
 				0,
-				7,
-				6,
 				5,
 				4,
-				10,
-				9,
+				3,
 				8,
-				18,
-				17,
+				7,
+				6,
 				16,
 				15,
 				14,
-				23,
-				22,
+				13,
+				12,
 				21,
 				20,
 				19,
-				50,
-				29,
+				18,
+				17,
+				49,
+				24,
 				28,
 				27,
 				26,
-				34,
+				25,
 				33,
 				32,
 				31,
 				30,
-				39,
+				29,
 				38,
 				37,
 				36,
 				35,
-				44,
+				34,
 				43,
 				42,
 				41,
 				40,
-				49,
+				39,
 				48,
 				47,
 				46,
 				45,
+				44,
 				75,
+				50,
 				54,
 				53,
 				52,
