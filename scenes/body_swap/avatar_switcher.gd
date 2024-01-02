@@ -10,7 +10,7 @@ extends Node
 var _body : XRToolsPlayerBody
 
 # The player body avatar driver
-var _body_avatar : XRToolsPlayerBodyAvatar
+var _body_avatar : XRAvatarDriverPlayerBody
 
 # Current avatar index
 var _current_avatar : int = 0
@@ -19,7 +19,7 @@ var _current_avatar : int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_body = XRToolsPlayerBody.find_instance(self)
-	_body_avatar = XRToolsPlayerBodyAvatar.find_instance(self)
+	_body_avatar = XRAvatarDriverPlayerBody.find_instance(self)
 	var controller := XRHelpers.get_xr_controller(self)
 	if controller:
 		controller.button_pressed.connect(_on_button_pressed)

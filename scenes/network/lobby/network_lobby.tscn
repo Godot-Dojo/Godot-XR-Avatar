@@ -86,7 +86,7 @@
 [ext_resource type="Animation" uid="uid://d3h36bkauutoq" path="res://addons/godot-xr-tools/hands/animations/right/Straight.res" id="75_8kpkq"]
 [ext_resource type="Animation" uid="uid://bq7cjxdn28jcv" path="res://addons/godot-xr-tools/hands/animations/right/Surfer.res" id="76_5ev6f"]
 [ext_resource type="Animation" uid="uid://d2ukhr3n2r1u8" path="res://addons/godot-xr-tools/hands/animations/right/Thumb.res" id="77_ovkoo"]
-[ext_resource type="PackedScene" uid="uid://ba6rrhwh7kn8c" path="res://addons/godot-xr-avatar/xr-tools/player_body_avatar.tscn" id="80_dg8u8"]
+[ext_resource type="PackedScene" uid="uid://ba6rrhwh7kn8c" path="res://addons/godot-xr-avatar/xr-tools/avatar_driver_player_body.tscn" id="80_dg8u8"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kw48d"]
 _data = {
@@ -280,7 +280,7 @@ laser_length = 1
 
 [node name="PlayerBody" parent="XROrigin3D" index="3" instance=ExtResource("8_fl2p4")]
 
-[node name="PlayerBodyAvatar" parent="XROrigin3D" index="4" node_paths=PackedStringArray("avatar") instance=ExtResource("80_dg8u8")]
+[node name="AvatarDriverPlayerBody" parent="XROrigin3D" index="4" node_paths=PackedStringArray("avatar") instance=ExtResource("80_dg8u8")]
 avatar = NodePath("../../Male1Avatar")
 
 [node name="Map" type="Node3D" parent="." index="1"]
@@ -305,7 +305,6 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 screen_size = Vector2(0.8, 0.4)
 
 [node name="Male1Avatar" parent="." index="2" instance=ExtResource("15_j2fig")]
-worn = true
 
 [editable path="XROrigin3D/LeftHand/LeftHand"]
 [editable path="XROrigin3D/LeftHand/LeftHand/Hand_Nails_low_L"]

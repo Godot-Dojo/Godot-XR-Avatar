@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba4tv8ygiwr20"]
+
+[ext_resource type="Script" path="res://addons/godot-xr-avatar/basic-xr/avatar_driver_xr_rig.gd" id="1_1u7oo"]
+
+[node name="AvatarDriverXrRig" type="Node"]
+script = ExtResource("1_1u7oo")
