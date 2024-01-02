@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="5_8lq8m"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="6_427pp"]
 [ext_resource type="PackedScene" uid="uid://rypqa6qcv0st" path="res://assets/maps/basic_map.tscn" id="8_7ggo2"]
-[ext_resource type="PackedScene" uid="uid://ba6rrhwh7kn8c" path="res://addons/godot-xr-avatar/xr-tools/player_body_avatar.tscn" id="8_urwre"]
+[ext_resource type="PackedScene" uid="uid://ba6rrhwh7kn8c" path="res://addons/godot-xr-avatar/xr-tools/avatar_driver_player_body.tscn" id="8_urwre"]
 [ext_resource type="PackedScene" uid="uid://osnbnoehtlmg" path="res://addons/godot-xr-avatar/avatars/human/male1_avatar.tscn" id="10_g73au"]
 [ext_resource type="PackedScene" uid="uid://3a6wjr3a13vd" path="res://assets/meshes/teleport/teleport.tscn" id="10_wfufb"]
 [ext_resource type="Texture2D" uid="uid://cjdqjh48u7pim" path="res://scenes/body_swap/body swap.png" id="11_8cwyp"]
@@ -28,7 +28,7 @@ strafe = true
 
 [node name="PlayerBody" parent="XROrigin3D" index="3" instance=ExtResource("6_427pp")]
 
-[node name="PlayerBodyAvatar" parent="XROrigin3D" index="4" node_paths=PackedStringArray("avatar") instance=ExtResource("8_urwre")]
+[node name="AvatarDriverPlayerBody" parent="XROrigin3D" index="4" node_paths=PackedStringArray("avatar") instance=ExtResource("8_urwre")]
 avatar = NodePath("../../Male1Avatar")
 
 [node name="Male1Avatar" parent="." index="1" instance=ExtResource("10_g73au")]

@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://osnbnoehtlmg" path="res://addons/godot-xr-avatar/avatars/human/male1_avatar.tscn" id="6_h2v3w"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="6_n1rsv"]
 [ext_resource type="PackedScene" uid="uid://bcrc77tnhpoi3" path="res://scenes/body_swap/avatar_switcher.tscn" id="8_6rs1e"]
-[ext_resource type="PackedScene" uid="uid://ba6rrhwh7kn8c" path="res://addons/godot-xr-avatar/xr-tools/player_body_avatar.tscn" id="8_jxwrk"]
+[ext_resource type="PackedScene" uid="uid://ba6rrhwh7kn8c" path="res://addons/godot-xr-avatar/xr-tools/avatar_driver_player_body.tscn" id="8_jxwrk"]
 [ext_resource type="PackedScene" uid="uid://m7ql3sny3boe" path="res://addons/godot-xr-avatar/avatars/human/sophia_avatar.tscn" id="8_qvjju"]
 [ext_resource type="PackedScene" uid="uid://b21igp85a8ctc" path="res://addons/godot-xr-avatar/avatars/wheeled/wheeled_robot_avatar.tscn" id="18_eyj5r"]
 [ext_resource type="PackedScene" uid="uid://xponfb6a2dhm" path="res://addons/godot-xr-avatar/avatars/flying/dragon_head_avatar.tscn" id="18_hsk11"]
@@ -57,7 +57,7 @@ avatars = [NodePath("../../../Avatars/DragonHeadAvatar"), NodePath("../../../Ava
 
 [node name="PlayerBody" parent="XROrigin3D" index="3" instance=ExtResource("6_n1rsv")]
 
-[node name="PlayerBodyAvatar" parent="XROrigin3D" index="4" node_paths=PackedStringArray("avatar") instance=ExtResource("8_jxwrk")]
+[node name="AvatarDriverPlayerBody" parent="XROrigin3D" index="4" node_paths=PackedStringArray("avatar") instance=ExtResource("8_jxwrk")]
 avatar = NodePath("../../Avatars/Male1Avatar")
 
 [node name="Map" type="Node3D" parent="." index="1"]

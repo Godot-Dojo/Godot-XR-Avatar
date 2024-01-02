@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_0r2nh"]
 [ext_resource type="Script" path="res://addons/godot-xr-avatar/xr-tools/multiplayer_scene_base.gd" id="2_5y04w"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="3_yueqh"]
-[ext_resource type="PackedScene" uid="uid://ba6rrhwh7kn8c" path="res://addons/godot-xr-avatar/xr-tools/player_body_avatar.tscn" id="4_n2u7v"]
+[ext_resource type="PackedScene" uid="uid://ba6rrhwh7kn8c" path="res://addons/godot-xr-avatar/xr-tools/avatar_driver_player_body.tscn" id="4_n2u7v"]
 
 [node name="MultiplayerSceneBase" instance=ExtResource("1_0r2nh")]
 script = ExtResource("2_5y04w")
@@ -13,6 +13,6 @@ cull_mask = 1048573
 
 [node name="PlayerBody" parent="XROrigin3D" index="3" instance=ExtResource("3_yueqh")]
 
-[node name="PlayerBodyAvatar" parent="XROrigin3D" index="4" instance=ExtResource("4_n2u7v")]
+[node name="AvatarDriverPlayerBody" parent="XROrigin3D" index="4" instance=ExtResource("4_n2u7v")]
 
 [node name="Avatars" type="Node3D" parent="." index="1"]
