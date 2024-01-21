@@ -23,7 +23,7 @@ jobs:
           mkdir plugin/godot-xr-avatar
           mkdir plugin/godot-xr-avatar/addons
           cp -r src/godot-xr-avatar/addons/godot-xr-avatar plugin/godot-xr-avatar/addons
-          cp src/godot-xr-avatar/LICENSE plugin/godot-xr-avatar/addons/godot-xr-avatar
+          cp src/godot-xr-avatar/LICENSE.md plugin/godot-xr-avatar/addons/godot-xr-avatar
           cp src/godot-xr-avatar/CONTRIBUTORS.md plugin/godot-xr-avatar/addons/godot-xr-avatar
           cp src/godot-xr-avatar/VERSIONS.md plugin/godot-xr-avatar/addons/godot-xr-avatar
       - name: Assemble Godot-XR-Avatar Demo
@@ -31,7 +31,7 @@ jobs:
           mkdir demo
           mkdir demo/godot-xr-avatar-demo
           cp -r src/godot-xr-avatar/. demo/godot-xr-avatar-demo
-          cp src/godot-xr-avatar/LICENSE demo/godot-xr-avatar-demo
+          cp src/godot-xr-avatar/LICENSE.md demo/godot-xr-avatar-demo
           cp src/godot-xr-avatar/CONTRIBUTORS.md demo/godot-xr-avatar-demo
           cp src/godot-xr-avatar/VERSIONS.md demo/godot-xr-avatar-demo
       - name: Create Godot-XR-Avatar library artifact
