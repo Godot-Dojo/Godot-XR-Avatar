@@ -1,0 +1,106 @@
+[gd_scene load_steps=20 format=3 uid="uid://bwucd5rrtuup0"]
+
+[ext_resource type="PackedScene" uid="uid://vmly2os3wm0d" path="res://scenes/demo_scene_base.tscn" id="1_sde35"]
+[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_jv8xm"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="3_rqew7"]
+[ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="4_uwcc5"]
+[ext_resource type="PackedScene" uid="uid://clt88d5d1dje4" path="res://addons/godot-xr-tools/functions/movement_crouch.tscn" id="5_hkoqe"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="6_qt67j"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="7_rqcfq"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="7_xj5vp"]
+[ext_resource type="PackedScene" uid="uid://ba6rrhwh7kn8c" path="res://addons/godot-xr-avatar/xr-tools/avatar_driver_player_body.tscn" id="10_2cvxb"]
+[ext_resource type="PackedScene" uid="uid://rypqa6qcv0st" path="res://assets/maps/basic_map.tscn" id="11_neg4j"]
+[ext_resource type="PackedScene" uid="uid://3a6wjr3a13vd" path="res://assets/meshes/teleport/teleport.tscn" id="12_nkj2a"]
+[ext_resource type="Texture2D" uid="uid://cg00ram4mrf5k" path="res://scenes/main_menu/return to main menu.png" id="13_ql2l2"]
+[ext_resource type="PackedScene" uid="uid://deivb6wki4duu" path="res://addons/godot-xr-avatar/avatars/human/female_avatar.tscn" id="14_egv51"]
+[ext_resource type="PackedScene" uid="uid://osnbnoehtlmg" path="res://addons/godot-xr-avatar/avatars/human/male1_avatar.tscn" id="14_s6t23"]
+[ext_resource type="PackedScene" uid="uid://b21igp85a8ctc" path="res://addons/godot-xr-avatar/avatars/wheeled/wheeled_robot_avatar.tscn" id="15_gb4cy"]
+[ext_resource type="PackedScene" uid="uid://m7ql3sny3boe" path="res://addons/godot-xr-avatar/avatars/human/sophia_avatar.tscn" id="16_vaekw"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_f2cd5"]
+viewport_path = NodePath("Map/Mirror/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n3r6q"]
+resource_local_to_scene = true
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_f2cd5")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ufqfw"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_n3r6q")
+size = Vector2(12, 3)
+
+[node name="Puppets" instance=ExtResource("1_sde35")]
+
+[node name="LeftHand" parent="XROrigin3D/LeftHand" index="0" instance=ExtResource("2_jv8xm")]
+
+[node name="MovementDirect" parent="XROrigin3D/LeftHand" index="1" instance=ExtResource("3_rqew7")]
+strafe = true
+
+[node name="MovementJump" parent="XROrigin3D/LeftHand" index="2" instance=ExtResource("4_uwcc5")]
+jump_button_action = "by_button"
+
+[node name="MovementCrouch" parent="XROrigin3D/LeftHand" index="3" instance=ExtResource("5_hkoqe")]
+crouch_button_action = "ax_button"
+
+[node name="RightHand" parent="XROrigin3D/RightHand" index="0" instance=ExtResource("6_qt67j")]
+
+[node name="MovementDirect" parent="XROrigin3D/RightHand" index="1" instance=ExtResource("3_rqew7")]
+
+[node name="MovementTurn" parent="XROrigin3D/RightHand" index="2" instance=ExtResource("7_rqcfq")]
+
+[node name="PlayerBody" parent="XROrigin3D" index="3" instance=ExtResource("7_xj5vp")]
+
+[node name="AvatarDriverPlayerBody" parent="XROrigin3D" index="4" instance=ExtResource("10_2cvxb")]
+process_physics_priority = -95
+
+[node name="Map" type="Node3D" parent="." index="1"]
+
+[node name="BasicMap" parent="Map" index="0" instance=ExtResource("11_neg4j")]
+
+[node name="ToMainMenu" parent="Map" index="1" instance=ExtResource("12_nkj2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 0)
+title = ExtResource("13_ql2l2")
+
+[node name="Mirror" type="Node3D" parent="Map" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="SubViewport" type="SubViewport" parent="Map/Mirror" index="0"]
+size = Vector2i(2048, 512)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Map/Mirror/SubViewport" index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.6, -8)
+cull_mask = 1048571
+fov = 29.4
+
+[node name="Mirror" type="MeshInstance3D" parent="Map/Mirror" index="1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.5, 0)
+layers = 4
+mesh = SubResource("QuadMesh_ufqfw")
+
+[node name="Avatars" type="Node3D" parent="." index="2"]
+
+[node name="Main" parent="Avatars" index="0" node_paths=PackedStringArray("driver") instance=ExtResource("14_egv51")]
+driver = NodePath("../../XROrigin3D/AvatarDriverPlayerBody")
+
+[node name="FemaleAvatar" parent="Avatars" index="1" node_paths=PackedStringArray("driver") instance=ExtResource("14_egv51")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+driver = NodePath("../../XROrigin3D/AvatarDriverPlayerBody")
+position_mode = 2
+
+[node name="Male1Avatar" parent="Avatars" index="2" node_paths=PackedStringArray("driver") instance=ExtResource("14_s6t23")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+driver = NodePath("../../XROrigin3D/AvatarDriverPlayerBody")
+position_mode = 2
+
+[node name="WheeledRobotAvatar" parent="Avatars" index="3" node_paths=PackedStringArray("driver") instance=ExtResource("15_gb4cy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+driver = NodePath("../../XROrigin3D/AvatarDriverPlayerBody")
+position_mode = 2
+
+[node name="SophiaAvatar" parent="Avatars" index="4" node_paths=PackedStringArray("driver") instance=ExtResource("16_vaekw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+driver = NodePath("../../XROrigin3D/AvatarDriverPlayerBody")
+position_mode = 2

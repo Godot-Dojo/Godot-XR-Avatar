@@ -21,6 +21,9 @@ var _left_controller : XRController3D
 # Right controller
 var _right_controller : XRController3D
 
+# Current driver state
+var _state : XRAvatarDriverState = XRAvatarDriverState.new()
+
 
 # Add support for is_xr_class on XRTools classes
 func is_xr_class(name : String) -> bool:
@@ -29,15 +32,8 @@ func is_xr_class(name : String) -> bool:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	super()
-
-	# Do not initialize if in the editor
-	if Engine.is_editor_hint():
-		set_physics_process(false)
-		return
-
 	# Set physics priority
-	process_physics_priority = -100
+	process_physics_priority = -95
 
 	# Get the XR nodes
 	_body = XRToolsPlayerBody.find_instance(self)
@@ -48,15 +44,19 @@ func _ready() -> void:
 
 # Update the avatar
 func _physics_process(_delta : float) -> void:
-	if not is_instance_valid(_current_avatar):
-		return
+	var player_xform := _body.global_transform
+	var player_xform_inv := player_xform.inverse()
 
-	# Update the current avatar
-	_current_avatar.global_transform = _body.global_transform
-	_current_avatar.head_target.global_transform = _camera.global_transform
-	_current_avatar.left_hand_target.global_transform = _left_controller.global_transform
-	_current_avatar.right_hand_target.global_transform = _right_controller.global_transform
-	_current_avatar.ground_control = _body.ground_control_velocity
+	# Update the avatar state
+	_state.player_transform = player_xform
+	_state.head_transform = player_xform_inv * _camera.global_transform
+	_state.left_hand_transform = player_xform_inv * _left_controller.global_transform
+	_state.right_hand_transform = player_xform_inv * _right_controller.global_transform
+	_state.ground_control = _body.ground_control_velocity
+
+
+func get_avatar_driver_state() -> XRAvatarDriverState:
+	return _state
 
 
 ## Find an [XRAvatarDriverPlayerBody] node.

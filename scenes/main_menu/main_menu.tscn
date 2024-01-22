@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://trx486fjeo6m"]
+[gd_scene load_steps=14 format=3 uid="uid://trx486fjeo6m"]
 
 [ext_resource type="PackedScene" uid="uid://vmly2os3wm0d" path="res://scenes/demo_scene_base.tscn" id="1_s12ir"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_2keqh"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://3a6wjr3a13vd" path="res://assets/meshes/teleport/teleport.tscn" id="10_wfufb"]
 [ext_resource type="Texture2D" uid="uid://cjdqjh48u7pim" path="res://scenes/body_swap/body swap.png" id="11_8cwyp"]
 [ext_resource type="Texture2D" uid="uid://clnfqn7qj5vmi" path="res://scenes/network/lobby/network lobby.png" id="12_bf61x"]
+[ext_resource type="Texture2D" uid="uid://8botvw30l583" path="res://scenes/puppets/puppets.png" id="13_08ra8"]
 
 [node name="MainMenu" instance=ExtResource("1_s12ir")]
 
@@ -28,10 +29,11 @@ strafe = true
 
 [node name="PlayerBody" parent="XROrigin3D" index="3" instance=ExtResource("6_427pp")]
 
-[node name="AvatarDriverPlayerBody" parent="XROrigin3D" index="4" node_paths=PackedStringArray("avatar") instance=ExtResource("8_urwre")]
-avatar = NodePath("../../Male1Avatar")
+[node name="AvatarDriverPlayerBody" parent="XROrigin3D" index="4" instance=ExtResource("8_urwre")]
+process_physics_priority = -95
 
-[node name="Male1Avatar" parent="." index="1" instance=ExtResource("10_g73au")]
+[node name="Male1Avatar" parent="." index="1" node_paths=PackedStringArray("driver") instance=ExtResource("10_g73au")]
+driver = NodePath("../XROrigin3D/AvatarDriverPlayerBody")
 
 [node name="Map" type="Node3D" parent="." index="2"]
 
@@ -41,14 +43,13 @@ avatar = NodePath("../../Male1Avatar")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8)
 scene = "res://scenes/body_swap/body_swap.tscn"
 title = ExtResource("11_8cwyp")
-spawn_point_name = ""
-spawn_point_position = Vector3(0, 0, 0)
-spawn_point_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="ToNetworkLobby" parent="Map" index="2" instance=ExtResource("10_wfufb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8)
 scene = "res://scenes/network/lobby/network_lobby.tscn"
 title = ExtResource("12_bf61x")
-spawn_point_name = ""
-spawn_point_position = Vector3(0, 0, 0)
-spawn_point_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Teleport" parent="Map" index="3" instance=ExtResource("10_wfufb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+scene = "res://scenes/puppets/puppets.tscn"
+title = ExtResource("13_08ra8")

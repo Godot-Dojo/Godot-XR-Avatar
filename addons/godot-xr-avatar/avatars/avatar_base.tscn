@@ -31,11 +31,9 @@ properties/8/path = NodePath(".:ground_control")
 properties/8/spawn = true
 properties/8/replication_mode = 1
 
-[node name="AvatarBase" type="Node3D" node_paths=PackedStringArray("head_target", "left_hand_target", "right_hand_target")]
+[node name="AvatarBase" type="Node3D"]
+process_physics_priority = -95
 script = ExtResource("1_gxp7o")
-head_target = NodePath("Head")
-left_hand_target = NodePath("LeftHand")
-right_hand_target = NodePath("RightHand")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_huaed")

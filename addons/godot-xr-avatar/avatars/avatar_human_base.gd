@@ -31,7 +31,7 @@ func _process(_delta : float) -> void:
 		return
 
 	# Solve the back angle (law of cosines)
-	var head : float = min(height_head, head_target.position.y)
+	var head : float = min(height_head, _head_target.position.y)
 	var p2h := height_head - height_pelvis
 	var back_angle := acos((head**2 + p2h**2 - height_pelvis**2) / (2*head*p2h))
 	back_angle = min(back_angle, 0.4)
@@ -43,10 +43,10 @@ func _process(_delta : float) -> void:
 		(Vector3.DOWN * height_pelvis)
 
 
-# Override _update_locally_driven to hide hand meshes
-func _update_locally_driven() -> void:
-	super()
+# Override _update_worn to hide hand meshes
+func _update_worn(p_worn : bool) -> void:
+	super(p_worn)
 
-	# Switch hand meshes invisible when locally driven
+	# Switch hand meshes invisible when worn
 	for m in hand_meshes:
-		m.visible = false if locally_driven else true
+		m.visible = false if p_worn else true

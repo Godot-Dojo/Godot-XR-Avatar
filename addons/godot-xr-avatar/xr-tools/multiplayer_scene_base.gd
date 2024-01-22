@@ -122,7 +122,7 @@ func _add_avatar(p_peer : int) -> XRAvatarBase:
 
 	# If this avatar is local then set it as the player body avatar
 	if inst.is_multiplayer_authority():
-		$XROrigin3D/AvatarDriverPlayerBody.avatar = inst
+		inst.driver = $XROrigin3D/AvatarDriverPlayerBody
 
 	# Return the avatar
 	return inst
