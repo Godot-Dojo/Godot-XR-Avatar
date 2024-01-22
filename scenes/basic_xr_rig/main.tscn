@@ -24,14 +24,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1, 0)
 tracker = &"right_hand"
 pose = &"aim"
 
-[node name="AvatarDriverXrRig" parent="XROrigin3D" node_paths=PackedStringArray("origin", "camera", "left_controller", "right_controller", "avatar") instance=ExtResource("1_f72xs")]
+[node name="AvatarDriverXrRig" parent="XROrigin3D" node_paths=PackedStringArray("origin", "camera", "left_controller", "right_controller") instance=ExtResource("1_f72xs")]
 origin = NodePath("..")
 camera = NodePath("../XRCamera3D")
 left_controller = NodePath("../LeftController")
 right_controller = NodePath("../RightController")
-avatar = NodePath("../../WheeledRobotAvatar")
 
 [node name="BasicMap" parent="." instance=ExtResource("1_61bju")]
 
-[node name="WheeledRobotAvatar" parent="." instance=ExtResource("3_u0l7b")]
-locally_driven = true
+[node name="WheeledRobotAvatar" parent="." node_paths=PackedStringArray("driver") instance=ExtResource("3_u0l7b")]
+driver = NodePath("../XROrigin3D/AvatarDriverXrRig")

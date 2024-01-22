@@ -35,6 +35,9 @@ size = Vector2(6, 3)
 
 [node name="BodySwap" instance=ExtResource("1_q3rf3")]
 
+[node name="XROrigin3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
 [node name="LeftHand" parent="XROrigin3D/LeftHand" index="0" instance=ExtResource("2_fijxn")]
 
 [node name="MovementDirect" parent="XROrigin3D/LeftHand" index="1" instance=ExtResource("2_xy6ye")]
@@ -57,8 +60,8 @@ avatars = [NodePath("../../../Avatars/DragonHeadAvatar"), NodePath("../../../Ava
 
 [node name="PlayerBody" parent="XROrigin3D" index="3" instance=ExtResource("6_n1rsv")]
 
-[node name="AvatarDriverPlayerBody" parent="XROrigin3D" index="4" node_paths=PackedStringArray("avatar") instance=ExtResource("8_jxwrk")]
-avatar = NodePath("../../Avatars/Male1Avatar")
+[node name="AvatarDriverPlayerBody" parent="XROrigin3D" index="4" instance=ExtResource("8_jxwrk")]
+process_physics_priority = -95
 
 [node name="Map" type="Node3D" parent="." index="1"]
 
@@ -101,12 +104,11 @@ mesh = SubResource("QuadMesh_ouicf")
 
 [node name="Avatars" type="Node3D" parent="." index="2"]
 
-[node name="DragonHeadAvatar" parent="Avatars" index="0" instance=ExtResource("18_hsk11")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+[node name="DragonHeadAvatar" parent="Avatars" index="0" node_paths=PackedStringArray("driver") instance=ExtResource("18_hsk11")]
+driver = NodePath("../../XROrigin3D/AvatarDriverPlayerBody")
 
 [node name="FemaleAvatar" parent="Avatars" index="1" instance=ExtResource("5_y3gx5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
-locally_driven = false
 
 [node name="Male1Avatar" parent="Avatars" index="2" instance=ExtResource("6_h2v3w")]
 

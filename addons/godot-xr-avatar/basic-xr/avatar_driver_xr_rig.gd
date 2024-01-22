@@ -21,21 +21,22 @@ extends XRAvatarDriver
 @export var right_controller : XRController3D : set = _set_right_controller
 
 
+# Current driver state
+var _state : XRAvatarDriverState = XRAvatarDriverState.new()
+
 # Last ground position
 var _ground_last : Vector3 = Vector3.ZERO
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	super()
-
 	# Do not initialize if in the editor
 	if Engine.is_editor_hint():
 		set_physics_process(false)
 		return
 
 	# Set physics priority
-	process_physics_priority = -100
+	process_physics_priority = -95
 
 
 # Get the configuration warnings for this node.
@@ -58,25 +59,27 @@ func _get_configuration_warnings() -> PackedStringArray:
 
 # Update the avatar
 func _physics_process(_delta : float) -> void:
-	if not is_instance_valid(_current_avatar):
-		return
-
 	# Calculate the ground transform
-	var ground_xform := origin.global_transform
-	ground_xform.origin += camera.position.slide(Vector3.UP)
+	var player_xform := origin.global_transform
+	player_xform.origin += camera.position.slide(Vector3.UP)
+	var player_xform_inv := player_xform.inverse()
 
 	# Get the ground position and velocity
-	var ground_pos := ground_xform.origin
+	var ground_pos := player_xform.origin
 	var ground_vel := origin.to_local(ground_pos - _ground_last).slide(Vector3.UP) / _delta
 	var ground_vel2 := Vector2(ground_vel.x, -ground_vel.z)
 	_ground_last = ground_pos
 
-	# Update the current avatar
-	_current_avatar.global_transform = ground_xform
-	_current_avatar.head_target.global_transform = camera.global_transform
-	_current_avatar.left_hand_target.global_transform = left_controller.global_transform
-	_current_avatar.right_hand_target.global_transform = right_controller.global_transform
-	_current_avatar.ground_control = ground_vel2
+	# Update the avatar state
+	_state.player_transform = player_xform
+	_state.head_transform = player_xform_inv * camera.global_transform
+	_state.left_hand_transform = player_xform_inv * left_controller.global_transform
+	_state.right_hand_transform = player_xform_inv * right_controller.global_transform
+	_state.ground_control = ground_vel2
+
+
+func get_avatar_driver_state() -> XRAvatarDriverState:
+	return _state
 
 
 func _set_origin(p_origin : XROrigin3D) -> void:
